@@ -1,9 +1,8 @@
 pipleline{
+tools {
+  maven 'mymaven'
+}
 agent linux_agent
-	tools {
-	  maven 'mymaven'
-	}
-
 stages {
   stage('checkout the code from git repo') {
     steps {
