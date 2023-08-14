@@ -2,7 +2,9 @@ pipeline{
 	tools {
 		maven 'mymaven'
 	}
-	agent linux_node
+	agent {
+ 	 label 'linux_node'
+	}
 	stages {
 	  stage('checkout the code from git repo') {
 		steps {
