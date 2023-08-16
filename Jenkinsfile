@@ -38,6 +38,13 @@ pipeline{
 		  sh 'mvn package'
 		}
 	  }
+	stage('Deploying'){
+		steps{
+			sshagent(['AgentID2']) {
+				sh "scp -o StrictHostKeyChecking=no Assignment3_pipeline/target/addressbook.war ec2-user@3.17.57.205:/usr/share/tomcat/webapps"
+			}
+		}
+	  }
 
 }
 }
