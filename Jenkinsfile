@@ -41,7 +41,7 @@ pipeline{
 	stage('Deploying'){
 		steps{
 			sshagent(['AgentID2']) {
-				sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Assignment3_pipeline/target/addressbook.war ec2-user@172.31.17.233:/usr/share/tomcat/webapps"
+				sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Assignment3_pipeline/target/addressbook.war ec2-user@172.31.10.91:/opt/tomcat9/webapps"
 			}
 		}
 	  }
