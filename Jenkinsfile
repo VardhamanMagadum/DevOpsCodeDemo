@@ -53,6 +53,10 @@ pipeline{
 		     sh 'docker push vardhamanm/myimagejenkins:$BUILD_NUMBER'
 		}
 	}
-			
+	stage('Deploy the application'){
+		steps{
+		sh 'docker run -d -P myimagejenkins:$BUILD_NUMBER'
+		}
+	}	
 }
 }
