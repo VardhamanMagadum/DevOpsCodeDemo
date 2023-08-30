@@ -40,8 +40,8 @@ pipeline{
 	  }
 	stage('Building the Docker Image'){
 		steps{
-		    sh “cp var/lib/Jenkins/FinalProject/workspace/target/addressbook.war .”
-		    sh "docker build -t myimagejenkins ."
+		    sh 'cp var/lib/Jenkins/FinalProject/workspace/target/addressbook.war .'
+		    sh 'docker build -t myimagejenkins .'
 	  }
 
 	}
