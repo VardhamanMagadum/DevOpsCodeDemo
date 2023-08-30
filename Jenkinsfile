@@ -38,13 +38,20 @@ pipeline{
 		  sh 'mvn package'
 		}
 	  }
-	stage('Deploying'){
+	stage('Building the Docker Image'){
 		steps{
-			sshagent(['AgentID2']) {
-				sh "scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/Assignment3_pipeline/target/addressbook.war ec2-user@172.31.10.91:/opt/tomcat9/webapps"
-			}
-		}
+		    sh “cp var/lib/Jenkins/FinalProject/workspace/target/addressbook.war .”
+		    sh "docker build -t myimagejenkins ."
 	  }
 
+	}
+	stage('Push the image to docker hub'){
+		steps{
+		     sh 'docker tag myimagejenkins vardhamanm/myimagejenkins:$BUILD_NUMBER'
+		     sh 'docker login --username vardhamanm --password Hh@15241524'
+		     sh 'docker push vardhamanm/myimagejenkins:$BUILD_NUMBER'
+		}
+	}
+			
 }
 }
