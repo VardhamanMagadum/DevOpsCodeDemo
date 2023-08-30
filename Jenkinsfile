@@ -40,8 +40,9 @@ pipeline{
 	  }
 	stage('Building the Docker Image'){
 		steps{
+			echo 'build number is:' $BUILD_NUMBER
 		    sh 'cp /var/lib/jenkins/workspace/FinalProject/target/addressbook.war .'
-		    sh 'docker build -t myimagejenkins .'
+		    sh 'docker build -t myimagejenkins:$BUILD_NUMBER .'
 	  }
 
 	}
